@@ -1,0 +1,20 @@
+{
+  "name": "NodeJS",
+  "version": "1.0.0",
+  "description": "Kompilasi Kodingan Epik NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "graph": "git log --all --decorate --oneline --graph"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimmslots/NodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimmslots/NodeJS/issues"
+  },
+  "homepage": "https://github.com/dimmslots/NodeJS#readme"
+}
