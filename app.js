@@ -1,6 +1,6 @@
-const { fstat } = require('fs');
 const http = require('http');
 const fs = require('fs');
+
 const renderHTML = (path, res) => {
   fs.readFile(path, (err, data) => {
     if (err) {
