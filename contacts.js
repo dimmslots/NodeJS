@@ -1,34 +1,6 @@
 const fs = require('fs');
-const readline = require('readline');
+const validator = require('validator');
 
-// Menulis string ke file (sync)
-// try {
-//     fs.writeFileSync('string.txt', 'Hello World');
-// } catch (error) {
-//     console.log(error);
-// }
-
-// Menulis string ke file (async)
-// fs.writeFile('data/string.txt', 'Async Hello World', (err) => {
-//   console.log(err);
-// });
-
-// Membaca isi file (sync)
-// const syncRead = fs.readFileSync('data/string.txt', 'utf-8');
-// console.log(syncRead);
-
-// Membaca isi file (async)
-// const asyncRead = fs.readFile('data/string.txt', 'utf-8', (err, data) => {
-//   if (err) throw err;
-//   console.log(data);
-// });
-
-// Readline
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
 
 // Membuat folder data jika belum ada
 const dirPath = './data';
@@ -42,24 +14,28 @@ if (!fs.existsSync(filePath)) {
   fs.writeFileSync(filePath, '[]', 'utf-8');
 }
 
-const pertanyaan = (tanya) => {
-  return new Promise((resolve, reject) => {
-    rl.question(tanya, (jawab) => {
-      resolve(jawab);
-    });
-  });
-};
-
 const simpanContact = (nama, noHP) => {
     const contact = { nama, noHP };
     const file = fs.readFileSync('data/contacts.json', 'utf-8');
     const contacts = JSON.parse(file);
   
+    // cek duplikat
+    const duplikat = contacts.find((contact) => contact.nama === nama);
+    if(duplikat) {
+        (console.log('Contact sudah ada!'));
+        return false;
+    }
+
+    // cek email
+    if(!validator.isMobilePhone(noHP, 'id-ID')) {
+        console.log('Nomor HP tidak valid!');
+        return false;
+    }
+
     contacts.push(contact);
     fs.writeFileSync('data/contacts.json', JSON.stringify(contacts));
   
     console.log('Terima kasih telah memasukkan data');
-    rl.close();
 }
 
-module.exports = {simpanContact, pertanyaan};
+module.exports = {simpanContact};

@@ -1,10 +1,30 @@
-const {simpanContact, pertanyaan} = require('./contacts');
+const yargs = require('yargs');
+const { simpanContact } = require('./contacts');
 
-const main = async () => {
-  const nama = await pertanyaan('Masukkan Nama Anda : ');
-  const noHP = await pertanyaan('Masukkan No HP Anda : ');
+// Mengambil argument dari command line
 
-  simpanContact(nama, noHP);
-};
+yargs.command({
+  command: 'add',
+  describe: 'Menambah contact baru',
+  builder: {
+    nama: {
+      describe: 'Nama lengkap',
+      demandOption: true,
+      type: 'string',
+    },
+    noHP: {
+      describe: 'Nomer HP',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler(argv) {
+    const contact = {
+      nama: argv.nama,
+      noHP: argv.noHP,
+    };
+    simpanContact(argv.nama, argv.noHP);
+  },
+});
 
-main();
+yargs.parse();
