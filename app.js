@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const expressLayouts = require('express-ejs-layouts');
-const { loadContact } = require('./utils/contacts');
+const { loadContact, findContact } = require('./utils/contacts');
 
 // gunakan ejs
 app.set('view engine', 'ejs');
@@ -48,6 +48,16 @@ app.get('/contact', (req, res) => {
     title: 'Halaman Contact',
     namepage: 'contact.html',
     contacts: contacts
+  });
+});
+
+app.get('/contact/:nama', (req, res) => {
+  const contact = findContact(req.params.nama);
+
+  res.render('detail', {
+    layout: 'layouts/main-layout',
+    title: 'Halaman Detail Contact',
+    contact
   });
 });
 
