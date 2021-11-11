@@ -2,24 +2,12 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const expressLayouts = require('express-ejs-layouts');
-const morgan = require('morgan');
+const { loadContact } = require('./utils/contacts');
 
 // gunakan ejs
 app.set('view engine', 'ejs');
-
-// Third-party middleware
-app.use(expressLayouts);
-app.use(morgan('dev'));
-
-
-// Built-in middleware
 app.use(express.static('public'));
-
-// Application level middleware
-app.use((req, res, next) => {
-  console.log('Time: ', Date.now());
-  next();
-});
+app.use(expressLayouts);
 
 app.get('/', (req, res) => {
   // res.sendFile('./public/index.html', { root: __dirname });
@@ -54,10 +42,12 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/contact', (req, res) => {
+  const contacts = loadContact();
   res.render('contact', {
     layout: 'layouts/main-layout',
     title: 'Halaman Contact',
     namepage: 'contact.html',
+    contacts: contacts
   });
 });
 
