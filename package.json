@@ -1,20 +1,19 @@
 {
-  "name": "NodeJS",
+  "name": "Node-auth",
   "version": "1.0.0",
-  "description": "Kompilasi Kodingan Epik NodeJS",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "graph": "git log --all --decorate --oneline --graph"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dimmslots/NodeJS.git"
+    "devStart": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dimmslots/NodeJS/issues"
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1"
   },
-  "homepage": "https://github.com/dimmslots/NodeJS#readme"
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }

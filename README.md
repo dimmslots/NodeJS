@@ -1,2 +1,2 @@
-# NodeJS
-Kompilasi Kodingan Epik NodeJS
+# Node-Auth
+Autentikasi data dengan NodeJS & bcrypt
