@@ -1,0 +1,13 @@
+    <h1>NodeJS WebServer</h1>
+    <p>You're now at <small>"<%= namepage %>"</small></p>
+    
+
+    <h4>Daftar Mahasiswa</h4>
+    <% if (mahasiswa.length < 1) { %>
+    <p>Data Mahasiswa masih kosong.</p>
+    <% } else { %> <% mahasiswa.forEach(mhs => { %>
+    <ul>
+      <li><%= mhs.nama %></li>
+      <li><%= mhs.nim %></li>
+    </ul>
+    <% }); %> <% } %>
