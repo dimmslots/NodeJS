@@ -4,6 +4,7 @@
   "description": "Kompilasi Kodingan Epik NodeJS",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app",
     "graph": "git log --all --decorate --oneline --graph"
   },
   "repository": {
@@ -16,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/dimmslots/NodeJS/issues"
   },
-  "homepage": "https://github.com/dimmslots/NodeJS#readme"
+  "homepage": "https://github.com/dimmslots/NodeJS#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
